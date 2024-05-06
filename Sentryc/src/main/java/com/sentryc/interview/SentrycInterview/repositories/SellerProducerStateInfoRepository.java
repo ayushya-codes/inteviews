@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * @Author Ayushya
  */
 @Repository
-public interface SellerProducerStateRepository extends JpaRepository<SellerProducerStateInfo, String> {
+public interface SellerProducerStateInfoRepository extends JpaRepository<SellerProducerStateInfo, String> {
 }

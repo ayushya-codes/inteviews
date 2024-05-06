@@ -8,6 +8,7 @@ import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.URL;
 
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @Author Ayushya
@@ -40,6 +41,10 @@ public class Seller {
 
     @OneToOne
     private MarketPlace marketPlace;
+
+    @OneToMany(targetEntity = SellerProducerStateInfo.class)
+    @JoinColumn(name = "seller_info_id", referencedColumnName = "id")
+    private Set<SellerProducerStateInfo> sellerProducerStateInfos;
 
     @Override
     public boolean equals(Object o) {

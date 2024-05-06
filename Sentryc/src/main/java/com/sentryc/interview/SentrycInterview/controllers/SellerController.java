@@ -1,5 +1,6 @@
 package com.sentryc.interview.SentrycInterview.controllers;
 
+import com.sentryc.interview.SentrycInterview.dtos.Params;
 import com.sentryc.interview.SentrycInterview.models.Seller;
 import com.sentryc.interview.SentrycInterview.repositories.SellerRepository;
 import org.springframework.data.domain.Page;
@@ -28,12 +29,12 @@ public class SellerController {
         return sellerRepository.findAll(pageable);
     }
 
-//    @GetMapping("/filter")
-//    public Page<Seller> filterSellers(Pageable pageable) {
-//        // TODO may introduce a service layer for additional business logic!
-//        // i.e. Hibernate projections
-//        return sellerRepository.findSellersByNameAndByProducerIdAndByMarketPlaceId(pageable);
-//    }
+    @GetMapping("/filter")
+    public Page<Seller> filterSellers(Params params, Pageable pageable) {
+        // TODO may introduce a service layer for additional business logic!
+        // i.e. Hibernate projections
+        return sellerRepository.findCustomSellerInformation(params,pageable);
+    }
 
     @PostMapping
     public Seller createSeller(Seller seller) {

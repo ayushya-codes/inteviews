@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * @Author Ayushya
@@ -34,9 +32,12 @@ public class SellerProducerStateInfo {
     @Column(name = "state")
     private String state = "REGULAR";
 
-    @ManyToOne(targetEntity = Seller.class)
-    @JoinColumn(name = "seller_info_id")
-    private Set<Seller> sellers = new HashSet<>();
+//    @ManyToOne(targetEntity = Seller.class)
+//    @JoinColumn(name = "seller_info_id")
+//    private Set<Seller> sellers = new HashSet<>();
+
+    @Column(name = "seller_info_id")
+    private String sellerInfoId;
 
     @Override
     public boolean equals(Object o) {
