@@ -5,6 +5,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.Length;
 
@@ -15,6 +17,8 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "marketplaces")
+@Getter
+@Setter
 public class MarketPlace {
 
     @Id
@@ -25,22 +29,6 @@ public class MarketPlace {
 
     @Column(name = "description")
     @Length(min = 0, max = 255) String description;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -5,13 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @Author Ayushya
  */
 @Entity
-@Table(name = "sellers", uniqueConstraints = {
+@Table(name = "sellers", schema = "public", uniqueConstraints = {
         @UniqueConstraint(
                 columnNames = {"producer_id", "seller_info_id", "state"}
         )
@@ -29,12 +31,12 @@ public class SellerProducerStateInfo {
     @JoinColumn(name = "producer_id")
     private Producer producer;
 
-    @OneToOne
-    @JoinColumn(name = "seller_info_id")
-    private Seller seller;
-
     @Column(name = "state")
     private String state = "REGULAR";
+
+    @ManyToOne(targetEntity = Seller.class)
+    @JoinColumn(name = "seller_info_id")
+    private Set<Seller> sellers = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

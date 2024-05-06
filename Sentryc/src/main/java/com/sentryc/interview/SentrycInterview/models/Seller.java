@@ -2,6 +2,8 @@ package com.sentryc.interview.SentrycInterview.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.URL;
 
@@ -11,7 +13,9 @@ import java.util.Objects;
  * @Author Ayushya
  */
 @Entity
-@Table(name = "seller_infos")
+@Table(name = "seller_infos", schema = "public")
+@Getter
+@Setter
 //REFERS to SELLER_INFOS TABLE
 public class Seller {
 
@@ -36,54 +40,6 @@ public class Seller {
 
     @OneToOne
     private MarketPlace marketPlace;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getExternalId() {
-        return externalId;
-    }
-
-    public void setExternalId(String externalId) {
-        this.externalId = externalId;
-    }
-
-    public MarketPlace getMarketPlace() {
-        return marketPlace;
-    }
-
-    public void setMarketPlace(MarketPlace marketPlace) {
-        this.marketPlace = marketPlace;
-    }
 
     @Override
     public boolean equals(Object o) {

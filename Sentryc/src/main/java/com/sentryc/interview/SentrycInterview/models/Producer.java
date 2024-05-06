@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.Length;
 
@@ -15,6 +17,8 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "producers")
+@Getter
+@Setter
 public class Producer {
 
     @Id
@@ -29,30 +33,6 @@ public class Producer {
     @Column(name = "created_at")
     private Instant createdAt = Instant.now();
 
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
 
     @Override
     public boolean equals(Object o) {

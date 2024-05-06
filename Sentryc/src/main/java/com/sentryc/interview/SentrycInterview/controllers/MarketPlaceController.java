@@ -20,7 +20,7 @@ public class MarketPlaceController {
     }
 
 
-    @GetMapping
+    @GetMapping("/marketplaces")
     public Page<MarketPlace> getMarketPlaces(Pageable pageable) {
         return marketPlaceRepository.findAll(pageable);
     }
