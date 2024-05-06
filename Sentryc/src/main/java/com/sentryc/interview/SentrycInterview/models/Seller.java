@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.URL;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ import java.util.Set;
 @Getter
 @Setter
 //REFERS to SELLER_INFOS TABLE
-public class Seller {
+public class Seller implements Serializable {
 
     @Id
     @Column(name = "id")

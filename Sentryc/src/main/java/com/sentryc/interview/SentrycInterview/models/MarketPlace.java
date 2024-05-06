@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.Length;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -19,7 +20,7 @@ import java.util.Objects;
 @Table(name = "marketplaces")
 @Getter
 @Setter
-public class MarketPlace {
+public class MarketPlace implements Serializable {
 
     @Id
     // Allows to use latest RFC-4122 compliant with version 4

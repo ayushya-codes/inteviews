@@ -1,8 +1,10 @@
 package com.sentryc.interview.SentrycInterview.controllers;
 
+import com.sentryc.interview.SentrycInterview.dtos.Data;
 import com.sentryc.interview.SentrycInterview.dtos.Params;
 import com.sentryc.interview.SentrycInterview.models.Seller;
 import com.sentryc.interview.SentrycInterview.repositories.SellerRepository;
+import com.sentryc.interview.SentrycInterview.services.SellerService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +21,11 @@ public class SellerController {
 
     private final SellerRepository sellerRepository;
 
-    public SellerController(SellerRepository sellerRepository) {
+    private final SellerService sellerService;
+
+    public SellerController(SellerRepository sellerRepository, SellerService sellerService) {
         this.sellerRepository = sellerRepository;
+        this.sellerService = sellerService;
     }
 
 
@@ -30,10 +35,8 @@ public class SellerController {
     }
 
     @GetMapping("/filter")
-    public Page<Seller> filterSellers(Params params, Pageable pageable) {
-        // TODO may introduce a service layer for additional business logic!
-        // i.e. Hibernate projections
-        return sellerRepository.findCustomSellerInformation(params,pageable);
+    public Data filterSellers(Params params, Pageable pageable) {
+        return sellerService.findCustomSellerInformation(params, pageable);
     }
 
     @PostMapping

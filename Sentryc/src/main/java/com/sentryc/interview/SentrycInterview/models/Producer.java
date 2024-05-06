@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.Length;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ import java.util.Objects;
 @Table(name = "producers")
 @Getter
 @Setter
-public class Producer {
+public class Producer implements Serializable {
 
     @Id
     @UuidGenerator(style = UuidGenerator.Style.AUTO)

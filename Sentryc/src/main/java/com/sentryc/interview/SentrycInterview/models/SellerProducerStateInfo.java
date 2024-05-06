@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -19,7 +20,7 @@ import java.util.Objects;
 @Getter
 @Setter
 //REFERS to SELLER TABLE
-public class SellerProducerStateInfo {
+public class SellerProducerStateInfo implements Serializable {
 
     @Id
     @UuidGenerator(style = UuidGenerator.Style.AUTO)
@@ -30,11 +31,8 @@ public class SellerProducerStateInfo {
     private Producer producer;
 
     @Column(name = "state")
+    // default state is regular!
     private String state = "REGULAR";
-
-//    @ManyToOne(targetEntity = Seller.class)
-//    @JoinColumn(name = "seller_info_id")
-//    private Set<Seller> sellers = new HashSet<>();
 
     @Column(name = "seller_info_id")
     private String sellerInfoId;

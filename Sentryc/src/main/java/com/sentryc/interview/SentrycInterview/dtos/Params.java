@@ -1,11 +1,13 @@
 package com.sentryc.interview.SentrycInterview.dtos;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @Author Ayushya
  */
-@Data
+@Getter
+@Setter
 public class Params {
 
     private String name;
