@@ -1,6 +1,6 @@
 package com.sentryc.interview.SentrycInterview.repositories;
 
-import com.sentryc.interview.SentrycInterview.models.SellerInformation;
+import com.sentryc.interview.SentrycInterview.models.SellerProducerStateInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * @Author Ayushya
  */
 @Repository
-public interface SellerInformationRepository extends JpaRepository<SellerInformation, String> {
+public interface SellerProducerStateRepository extends JpaRepository<SellerProducerStateInfo, String> {
 }

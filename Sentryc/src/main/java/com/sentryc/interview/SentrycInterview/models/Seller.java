@@ -1,7 +1,9 @@
 package com.sentryc.interview.SentrycInterview.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.validator.constraints.URL;
 
 import java.util.Objects;
 
@@ -9,28 +11,31 @@ import java.util.Objects;
  * @Author Ayushya
  */
 @Entity
-@Table(name = "sellers", uniqueConstraints = {
-        @UniqueConstraint(
-                columnNames = {"producer_id", "seller_info_id", "state"}
-        )
-})
+@Table(name = "seller_infos")
+//REFERS to SELLER_INFOS TABLE
 public class Seller {
 
     @Id
+    @Column(name = "id")
     @UuidGenerator(style = UuidGenerator.Style.AUTO)
     private String id;
 
-    @OneToOne
-    @JoinColumn(name = "producer_id")
-    private Producer producer;
+    @Column(name = "name", length = 2048)
+    @NotBlank
+    private String name;
+
+    @Column(name = "url", length = 2048)
+    @URL
+    private String url;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "external_id")
+    private String externalId;
 
     @OneToOne
-    @JoinColumn(name = "seller_info_id")
-    private SellerInformation sellerInformation;
-
-    @Column(name = "state")
-    private String state = "REGULAR";
-
+    private MarketPlace marketPlace;
 
     public String getId() {
         return id;
@@ -40,43 +45,56 @@ public class Seller {
         this.id = id;
     }
 
-    public Producer getProducer() {
-        return producer;
+    public String getName() {
+        return name;
     }
 
-    public void setProducer(Producer producer) {
-        this.producer = producer;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public SellerInformation getSellerInformation() {
-        return sellerInformation;
+    public String getUrl() {
+        return url;
     }
 
-    public void setSellerInformation(SellerInformation sellerInformation) {
-        this.sellerInformation = sellerInformation;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getState() {
-        return state;
+    public String getCountry() {
+        return country;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+    }
+
+    public MarketPlace getMarketPlace() {
+        return marketPlace;
+    }
+
+    public void setMarketPlace(MarketPlace marketPlace) {
+        this.marketPlace = marketPlace;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Seller seller = (Seller) o;
-        return Objects.equals(getId(), seller.getId())
-                && Objects.equals(getProducer(), seller.getProducer())
-                && Objects.equals(getSellerInformation(), seller.getSellerInformation())
-                && Objects.equals(getState(), seller.getState());
+        Seller that = (Seller) o;
+        return Objects.equals(getId(), that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getProducer(), getSellerInformation(), getState());
+        return Objects.hash(getId());
     }
 }
