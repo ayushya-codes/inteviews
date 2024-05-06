@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Author Ayushya
  */
-@RestController("/marketplaces")
+@RestController
 public class MarketPlaceController {
 
     private final MarketPlaceRepository marketPlaceRepository;

@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Author Ayushya
  */
-@RestController("/sellers")
+@RestController
 public class SellerController {
 }

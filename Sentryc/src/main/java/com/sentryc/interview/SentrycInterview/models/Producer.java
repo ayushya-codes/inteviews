@@ -1,6 +1,9 @@
 package com.sentryc.interview.SentrycInterview.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.Length;
 
@@ -24,7 +27,7 @@ public class Producer {
     private String name;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
 
     public String getId() {
@@ -47,9 +50,8 @@ public class Producer {
         return createdAt;
     }
 
-    @PrePersist
     public void setCreatedAt(Instant createdAt) {
-        this.createdAt = Instant.now();
+        this.createdAt = createdAt;
     }
 
     @Override

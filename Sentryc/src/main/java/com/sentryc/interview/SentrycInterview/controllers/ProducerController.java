@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Author Ayushya
  */
-@RestController("/producers")
+@RestController
 public class ProducerController {
 
     private final ProducerRepository producerRepository;
@@ -19,7 +19,7 @@ public class ProducerController {
         this.producerRepository = producerRepository;
     }
 
-    @GetMapping
+    @GetMapping("/producers")
     public Page<Producer> getAllProducers(Pageable pageable) {
         return producerRepository.findAll(pageable);
     }
