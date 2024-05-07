@@ -22,7 +22,6 @@ import java.util.Objects;
 public class MarketPlace implements Serializable {
 
     @Id
-    // Allows to use latest RFC-4122 compliant with version 4
     @Column(name = "id")
     String id;
 

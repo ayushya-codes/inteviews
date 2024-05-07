@@ -4,6 +4,8 @@ import com.sentryc.interview.SentrycInterview.models.MarketPlace;
 import com.sentryc.interview.SentrycInterview.repositories.MarketPlaceRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,7 @@ public class MarketPlaceController {
 
 
     @PostMapping
-    public MarketPlace createMarketPlace(MarketPlace marketPlace) {
-        return marketPlaceRepository.save(marketPlace);
+    public ResponseEntity<MarketPlace> createMarketPlace(MarketPlace marketPlace) {
+        return new ResponseEntity<>(marketPlaceRepository.save(marketPlace), HttpStatus.CREATED);
     }
 }
