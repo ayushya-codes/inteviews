@@ -42,11 +42,11 @@ public class SellerRepositoryCustomImpl implements SellerRepositoryCustom {
         }
         // Add market place filter!
         if (param.getMarketPlaceIds() != null && param.getMarketPlaceIds().length > 0) {
-            predicates.add(criteriaBuilder.in(mainSellerRoot.get("marketPlace").get("id")).in(Arrays.asList(param.getMarketPlaceIds())));
+            predicates.add(criteriaBuilder.in(mainSellerRoot.get("marketPlace").in(Arrays.asList(param.getMarketPlaceIds()))));
         }
 
         if (param.getProducerIds() != null && param.getProducerIds().length > 0) {
-            predicates.add(criteriaBuilder.in(mainSellerRoot.get("sellerProducerStateInfos").get("producer").get("id")).in(Arrays.asList(param.getProducerIds())));
+            predicates.add(criteriaBuilder.in(mainSellerRoot.get("sellerProducerStateInfos").get("producer").in(Arrays.asList(param.getProducerIds()))));
         }
 
         if(!CollectionUtils.isEmpty(predicates)) {
