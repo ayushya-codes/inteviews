@@ -4,10 +4,7 @@ import com.sentryc.interview.SentrycInterview.models.Producer;
 import com.sentryc.interview.SentrycInterview.repositories.ProducerRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author Ayushya
@@ -29,7 +26,7 @@ public class ProducerController {
 
 
     @PostMapping
-    public Producer createProducer(Producer producer) {
+    public Producer createProducer(@RequestBody Producer producer) {
         return producerRepository.save(producer);
     }
 }

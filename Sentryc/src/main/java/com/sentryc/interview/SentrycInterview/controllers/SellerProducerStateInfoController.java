@@ -4,10 +4,7 @@ import com.sentryc.interview.SentrycInterview.models.SellerProducerStateInfo;
 import com.sentryc.interview.SentrycInterview.repositories.SellerProducerStateInfoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author Ayushya
@@ -28,7 +25,7 @@ public class SellerProducerStateInfoController {
     }
 
     @PostMapping
-    public SellerProducerStateInfo createAssociation(SellerProducerStateInfo sellerProducerStateInfo) {
+    public SellerProducerStateInfo createAssociation(@RequestBody SellerProducerStateInfo sellerProducerStateInfo) {
         return sellerProducerStateInfoRepository.save(sellerProducerStateInfo);
     }
 

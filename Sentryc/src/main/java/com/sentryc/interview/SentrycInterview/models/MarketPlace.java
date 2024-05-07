@@ -5,8 +5,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
@@ -17,16 +15,33 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "marketplaces")
-@Getter
-@Setter
 public class MarketPlace implements Serializable {
+
+    public MarketPlace() {}
 
     @Id
     @Column(name = "id")
-    String id;
+    private String id;
 
     @Column(name = "description")
-    @Length(min = 0, max = 255) String description;
+    @Length(min = 0, max = 255)
+    private String description;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public boolean equals(Object o) {
