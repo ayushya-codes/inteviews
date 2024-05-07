@@ -41,6 +41,7 @@ public class Seller implements Serializable {
     private String externalId;
 
     @OneToOne
+    @JoinColumn(name = "marketplace_id", referencedColumnName = "id")
     private MarketPlace marketPlace;
 
     @OneToMany(targetEntity = SellerProducerStateInfo.class)

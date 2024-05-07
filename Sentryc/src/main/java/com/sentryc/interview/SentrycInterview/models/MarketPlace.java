@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
@@ -24,7 +23,6 @@ public class MarketPlace implements Serializable {
 
     @Id
     // Allows to use latest RFC-4122 compliant with version 4
-    @UuidGenerator(style = UuidGenerator.Style.AUTO)
     @Column(name = "id")
     String id;
 

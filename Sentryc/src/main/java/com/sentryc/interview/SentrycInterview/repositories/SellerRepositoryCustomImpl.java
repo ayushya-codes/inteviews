@@ -24,13 +24,13 @@ import java.util.List;
 public class SellerRepositoryCustomImpl implements SellerRepositoryCustom {
 
     @Autowired
-    private EntityManager em;
+    private EntityManager entityManager;
 
 
     @Override
     public Page<Seller> findCustomSellerInformation(Params param, Pageable pageable) {
 
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Seller> criteriaQuery = criteriaBuilder.createQuery(Seller.class);
         Root<Seller> mainSellerRoot = criteriaQuery.from(Seller.class);
         Root<SellerProducerStateInfo> sellerProducerStateRoot = criteriaQuery.from(SellerProducerStateInfo.class);
@@ -46,10 +46,11 @@ public class SellerRepositoryCustomImpl implements SellerRepositoryCustom {
             criteriaQuery.where(criteriaBuilder.in(sellerProducerStateRoot.get("producer").get("id")).in(Arrays.asList(param.getProducerIds())));
         }
 
-        List<Seller> result = em.createQuery(criteriaQuery).getResultList();
+        List<Seller> result = entityManager.createQuery(criteriaQuery)
+                .setFirstResult((int) pageable.getOffset())
+                .setMaxResults(pageable.getPageSize())
+                .getResultList();
 
-        // Pagination to be implemented yet!
-        // This would require manual implementation
         return new PageImpl<>(result);
     }
 
