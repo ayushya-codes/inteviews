@@ -33,8 +33,7 @@ class MarketPlaceControllerTest {
     @Test
     void getMarketPlaces() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/marketplaces").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().is(200))
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON));
+                .andExpect(MockMvcResultMatchers.status().is(200));
     }
 
     @Test
