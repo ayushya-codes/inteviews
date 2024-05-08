@@ -13,7 +13,7 @@ Possible improvements
 2. We can think based on the data access pattern of the data that requires frequent
  access and can model our entities accordingly.
 3. We can separate out the read and write concerns for data.
-4. Test cases can improve further.
+4. Test cases can improve further. (Done!)
 5. Can use MapStruct library for writing converters.
 ```
 <dependency>
@@ -42,3 +42,7 @@ Possible improvements
     </configuration>
 </plugin>
 ```
+
+**Update**
+1. Unit test cases improvement added.
+2. Build successfully executed with all the test cases!
