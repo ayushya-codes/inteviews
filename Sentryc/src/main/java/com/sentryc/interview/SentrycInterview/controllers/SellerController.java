@@ -7,6 +7,8 @@ import com.sentryc.interview.SentrycInterview.repositories.SellerRepository;
 import com.sentryc.interview.SentrycInterview.services.SellerService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -37,7 +39,7 @@ public class SellerController {
     }
 
     @PostMapping
-    public Seller createSeller(@RequestBody Seller seller) {
-        return sellerRepository.save(seller);
+    public ResponseEntity<Seller> createSeller(@RequestBody Seller seller) {
+        return new ResponseEntity<>(sellerRepository.save(seller), HttpStatus.CREATED);
     }
 }

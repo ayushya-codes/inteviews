@@ -46,11 +46,11 @@ public class SellerRepositoryCustomImpl implements SellerRepositoryCustom {
         }
 
         if (param.getProducerIds() != null && param.getProducerIds().length > 0) {
-            predicates.add(criteriaBuilder.in(mainSellerRoot.get("sellerProducerStateInfos").get("producer").in(Arrays.asList(param.getProducerIds()))));
+            predicates.add(criteriaBuilder.in(mainSellerRoot.get("sellerProducerStateInfos").get("producer").get("id").in(Arrays.asList(param.getProducerIds()))));
         }
 
-        if(!CollectionUtils.isEmpty(predicates)) {
-            criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        if (!CollectionUtils.isEmpty(predicates)) {
+            criteriaQuery.where(criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()])));
         }
 
         List<Seller> result = entityManager.createQuery(criteriaQuery)
